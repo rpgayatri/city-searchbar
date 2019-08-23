@@ -14,9 +14,8 @@ window.onload = function() {
     const searchInput = textInputField.value;
 
     if (searchInput) {
-      const filteredCities = cities.filter(cityObj =>
-        cityObj.city.includes(searchInput)
-      );
+      const regex = new RegExp(searchInput, "gi");
+      const filteredCities = cities.filter(cityObj => regex.test(cityObj.city));
       var cityList = filteredCities
         .map(cityObj => `<li class="result-item">${cityObj.city}</li>`)
         .join("");
